@@ -1,1 +1,1 @@
-# graphQL
+# GraphQL
