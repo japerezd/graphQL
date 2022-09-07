@@ -4,6 +4,10 @@ type Query {
   jobs: [Job!] # elements in an array should NEVER be NULL
 }
 
+type Mutation {
+  createJob(title: String!, companyId: ID!, description: String): Job
+}
+
 type Company {
   id: ID!
   name: String!
