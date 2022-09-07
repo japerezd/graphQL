@@ -2,7 +2,7 @@ import { request, gql } from 'graphql-request';
 
 const GRAPHQL_URL = 'http://localhost:9000/graphql';
 
-export async function getCompany(id) {
+export async function createJob(id) {
   const query = gql`
     query CompanyQuery($id: ID!) {
       company(id: $id) {
@@ -20,6 +20,25 @@ export async function getCompany(id) {
   const variables = { id };
   const { company } = await request(GRAPHQL_URL, query, variables);
   return company;
+}
+
+export async function getCompany(input) {
+  const query = gql`
+    mutation CreateJobMutation($input: CreateJobInput!) {
+      job: createJob(input: $input) {
+        id
+        title
+        company {
+          id
+          name
+        }
+      }
+    }
+  `;
+
+  const variables = { input };
+  const { job } = await request(GRAPHQL_URL, query, variables);
+  return job;
 }
 
 export async function getJob(id) {
