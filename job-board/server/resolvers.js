@@ -10,7 +10,8 @@ export const resolvers = {
 
   // Mutations are to mutate or modify something in database
   Mutation: {
-    createJob: (_root, { input }) => Job.create(input)
+    createJob: (_root, { input }) => Job.create(input),
+    deleteJob: (_root, { id }) => Job.delete(id),
   },
 
   Company: {
