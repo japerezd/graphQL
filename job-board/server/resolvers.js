@@ -1,5 +1,11 @@
 import { Company, Job } from './db.js';
 
+function rejectIf(condition) {
+  if (condition) {
+    throw new Error('Unauthorized');
+  }
+}
+
 export const resolvers = {
   // Queries are to get info from database
   Query: {
@@ -13,13 +19,23 @@ export const resolvers = {
     // third argument (which is called context) is provided from server in
     // new ApolloServer instance
     createJob: (_root, { input }, { user }) => {
-      if (!user) {
-        throw new Error('Unauthorized');
-      }
+      rejectIf(!user);
       return Job.create({ ...input, companyId: user.companyId });
     },
-    deleteJob: (_root, { id }) => Job.delete(id),
-    updateJob: (_root, { input }) => Job.update(input),
+    deleteJob: async (_root, { id }, { user }) => {
+      rejectIf(!user);
+      const job = await Job.findById(id);
+
+      rejectIf(job.companyId !== user.companyId);
+      return Job.delete(id);
+    },
+    updateJob: async (_root, { input }, { user }) => {
+      rejectIf(!user);
+      const job = await Job.findById(input.id);
+
+      rejectIf(job.companyId !== user.companyId);
+      return Job.update({ ...input, companyId: user.companyId });
+    },
   },
 
   Company: {
