@@ -28,5 +28,17 @@
     "title": "New job 1",
     "description": "Testing descriptoon",
     "companyId": "wvdB54Gqbdp_NZTXK9Tue"
+  },
+  {
+    "id": "UEfFFwgOe41hDu7ey6C1F",
+    "title": "New 2",
+    "description": "Test 2",
+    "companyId": "wvdB54Gqbdp_NZTXK9Tue"
+  },
+  {
+    "id": "zFLKfBrTMjavwYkaAbS4_",
+    "title": "Product Owner",
+    "description": "You need to give developers something to do otherwise they get bored",
+    "companyId": "wvdB54Gqbdp_NZTXK9Tue"
   }
 ]
