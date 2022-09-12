@@ -70,12 +70,13 @@ export async function getJobs() {
         title
         id
         company {
+          id # just for apollo client
           name
         }
       }
     }
   `;
 
-  const { data: { jobs } } = await client.query({ query })
+  const { data: { jobs } } = await client.query({ query, fetchPolicy: 'network-only' })
   return jobs;
 }
