@@ -30,17 +30,31 @@ export const JOB_QUERY = gql`
 `;
 
 export const JOBS_QUERY = gql`
-    query JobsQuery {
-      jobs {
-        title
-        id
-        company {
-          id # just for apollo client
-          name
-        }
+  query JobsQuery {
+    jobs {
+      title
+      id
+      company {
+        id # just for apollo client
+        name
       }
     }
-  `;
+  }
+`;
+
+export const COMPANY_QUERY = gql`
+  query CompanyQuery($id: ID!) {
+    company(id: $id) {
+      id
+      description
+      name
+      jobs {
+        id
+        title
+      }
+    }
+  }
+`;
 
 export async function createJob(input) {
   const mutation = gql`
@@ -96,4 +110,3 @@ export async function getCompany(companyId) {
   } = await client.query({ query, variables });
   return company;
 }
-

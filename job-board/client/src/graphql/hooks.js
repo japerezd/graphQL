@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { JOBS_QUERY, JOB_QUERY } from "./queries";
+import { COMPANY_QUERY, JOBS_QUERY, JOB_QUERY } from "./queries";
 
 export function useJob(id) {
   const { data, loading, error } = useQuery(JOB_QUERY, {
@@ -20,6 +20,18 @@ export function useJobs() {
 
   return {
     jobs: data?.jobs,
+    loading,
+    error: Boolean(error),
+  }
+}
+
+export function useCompany(id) {
+  const { data, loading, error } = useQuery(COMPANY_QUERY, {
+    variables: { id }
+  });
+
+  return {
+    company: data?.company,
     loading,
     error: Boolean(error),
   }
