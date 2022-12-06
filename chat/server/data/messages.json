@@ -1,0 +1,32 @@
+[
+  {
+    "id": "SJKhIAKYB",
+    "from": "system",
+    "text": "Welcome!"
+  },
+  {
+    "id": "aE1UAbURaQVV-3--xlmMh",
+    "from": "alice",
+    "text": "hi"
+  },
+  {
+    "id": "kWOqIy9OLHtPo7EOiK8TZ",
+    "from": "alice",
+    "text": "hi again"
+  },
+  {
+    "id": "0RqQsrLha5g3wgYklr31h",
+    "from": "alice",
+    "text": "wooow"
+  },
+  {
+    "id": "Zuk4WNPFkYWYIJeYqP_ib",
+    "from": "alice",
+    "text": "this works wonderfully"
+  },
+  {
+    "id": "-VEpaQJtsPjNBRiR70qwX",
+    "from": "alice",
+    "text": "woooooo"
+  }
+]
